@@ -55,7 +55,7 @@ class ReadItLaterService {
 	 */
 	public function add(string $userId, string $url) {
 
-		$content = $this->contentGrabber->fetchContent($url);
+		$content = $this->graby->fetchContent($url);
 		$contentToRender = '<html><body>' . $content['html'] . '</body></html>';
 		$sanitizedContentTile = $this->sanitize($content['title']);
 
@@ -70,7 +70,7 @@ class ReadItLaterService {
 		$entry->setUrl($url);
 		$entry->setCreatedAtAsDateTime(new \DateTime());
 		$entry->setFileId($fileId);
-		$this->entryMapper->insert($entry);
+		$this->mapper->insert($entry);
 	}
 
 
@@ -79,7 +79,7 @@ class ReadItLaterService {
 	 * @return Entry[]
 	 */
 	public function listEntries(string $userId) {
-		return $this->entryMapper->findAll($userId);
+		return $this->mapper->findAll($userId);
 	}
 
 	/**
@@ -88,7 +88,7 @@ class ReadItLaterService {
 	 */
 	public function delete(string $userId, int $entryId) {
 		$entry = $this->mapper->find($entryId, $userId);
-		$this->storage->delete($entry->getFileId());
+		$this->readItLaterStorage->delete($entry->getFileId());
 		$this->mapper->delete($entry);
 	}
 

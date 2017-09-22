@@ -35,8 +35,18 @@ class Application extends App {
 
 		$container->registerService('ReadItLaterService', function(IAppContainer $container) {
 			return new ReadItLaterService(
+				$container->query('Graby'),
+				$container->query('DomPDF'),
 				$container->query('EntryMapper')
 			);
+		});
+
+		$container->registerService('Graby', function() {
+			return new Graby();
+		});
+
+		$container->registerService('DomPDF', function() {
+			return new DomPDF();
 		});
 	}
 }

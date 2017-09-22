@@ -2,7 +2,7 @@
 <info>
     <id>read_it_later</id>
     <name>Read It Later</name>
-    <description></description>
+    <description>Application that allows for downloading content as PDF</description>
     <licence>MIT</licence>
     <author>Patrick Jahns, Philipp Schaffrath</author>
     <version>0.1.1</version>
@@ -11,9 +11,11 @@
     <dependencies>
         <owncloud min-version="10.0" max-version="10.0" />
     </dependencies>
+    <summary>Application that allows for downloading content as PDF</summary>
     <types>
         <filesystem/>
     </types>
+    <screenshot>https://github.com/phisch/read_it_later/raw/master/screenshots/app1.png</screenshot>
     <navigation>
         <route>read_it_later.readItLater.index</route>
         <order>100</order>

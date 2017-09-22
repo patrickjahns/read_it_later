@@ -1,0 +1,53 @@
+{
+  "name": "read_it_later",
+  "version": "0.0.0",
+  "description": "Read It Later Owncloud Application",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack  --progress --colors --watch",
+    "build-dev": "webpack",
+    "build": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/owncloud/market.git"
+  },
+  "keywords": [
+    "ownCloud",
+    "Read It Later"
+  ],
+  "author": "Patrick Jahns",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "6.24.0",
+    "babel-loader": "6.4.1",
+    "babel-polyfill": "6.23.0",
+    "babel-preset-env": "1.6.0",
+    "css-loader": "0.27.3",
+    "easygettext": "1.2.2",
+    "expose-loader": "0.7.3",
+    "jquery": "3.2.1",
+    "node-sass": "4.5.3",
+    "npm-watch": "0.1.8",
+    "pug": "2.0.0-beta9",
+    "sass-loader": "6.0.5",
+    "style-loader": "0.16.1",
+    "uglify-js": "3.0.13",
+    "uikit": "3.0.0-beta.30",
+    "vue": "2.3.3",
+    "vue-html-loader": "1.2.4",
+    "vue-loader": "11.3.4",
+    "vue-router": "2.3.1",
+    "vue-style-loader": "1.0.0",
+    "vue-template-compiler": "2.3.3",
+    "webpack": "2.6.1"
+  },
+  "bugs": {
+    "url": "https://github.com/phisch/read_it_later/issues"
+  },
+  "homepage": "https://github.com/phisch/read_it_later#readme"
+}

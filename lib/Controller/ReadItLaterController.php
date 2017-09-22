@@ -6,6 +6,7 @@ use OCA\ReadItLater\ReadItLaterService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IRequest;
 
 class ReadItLaterController extends Controller {
@@ -42,10 +43,10 @@ class ReadItLaterController extends Controller {
 
 	/**
 	 * @NoCSRFRequired
-	 * @return string
+	 * @return TemplateResponse
 	 */
 	public function index() {
-		return "Hello world";
+		return new TemplateResponse($this->appName, 'index', []);
 	}
 
 	/**

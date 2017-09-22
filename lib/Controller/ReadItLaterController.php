@@ -2,33 +2,42 @@
 
 namespace OCA\ReadItLater\Controller;
 
-use OCA\ReadItLater\Database\Entry;
-use OCA\ReadItLater\Database\EntryMapper;
+use OCA\ReadItLater\ReadItLaterService;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\DataResponse;
 use OCP\IRequest;
-
 
 class ReadItLaterController extends Controller {
 
 	/**
-	 * @var EntryMapper
+	 * @var ReadItLaterService
 	 */
-	private $entryMapper;
+	private $readItLaterService;
+
+	/**
+	 * @var int
+	 */
+	private $userId;
+
 
 	/**
 	 * ReadItLaterController constructor.
 	 *
 	 * @param string $appName
 	 * @param IRequest $request
-	 * @param EntryMapper $entryMapper
+	 * @param string $userId
+	 * @param ReadItLaterService $readItLaterService
 	 */
 	public function __construct(
 		$appName,
 		IRequest $request,
-		EntryMapper $entryMapper
+		string $userId,
+		ReadItLaterService $readItLaterService
 	) {
 		parent::__construct($appName, $request);
-		$this->entryMapper = $entryMapper;
+		$this->readItLaterService = $readItLaterService;
+		$this->userId = $userId;
 	}
 
 	/**
@@ -36,23 +45,32 @@ class ReadItLaterController extends Controller {
 	 * @return string
 	 */
 	public function index() {
-		$entry = new Entry();
-		$entry->setUserId("admin");
-		$entry->setTitle("my entry");
-		$entry->setUrl("http://awesome.tld");
-		$entry->setCreatedAtAsDateTime(new \DateTime());
-		$entry->setFileId(1);
-		$this->entryMapper->insert($entry);
-
-		return $this->entryMapper->findAll("admin");
+		return "Hello world";
 	}
 
+	/**
+	 * @NoCSRFRequired
+	 * @return DataResponse
+	 */
 	public function listEntries() {
+		return new DataResponse($this->readItLaterService->listEntries($this->userId));
 	}
 
+	/**
+	 * @NoCSRFRequired
+	 * @return DataResponse
+	 */
 	public function add() {
+		$this->readItLaterService->add($this->userId, $this->request->getParam('url'));
+		return new DataResponse([], Http::STATUS_CREATED);
 	}
 
+	/**
+	 * @NoCSRFRequired
+	 * @return DataResponse
+	 */
 	public function delete() {
+		$this->readItLaterService->delete($this->userId, $this->request->getParam('id'));
+		return new DataResponse([], Http::STATUS_NO_CONTENT);
 	}
 }

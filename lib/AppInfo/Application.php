@@ -4,6 +4,7 @@ namespace OCA\ReadItLater\AppInfo;
 
 use OCA\ReadItLater\Controller\ReadItLaterController;
 use OCA\ReadItLater\Database\EntryMapper;
+use OCA\ReadItLater\ReadItLaterService;
 use OCP\AppFramework\App;
 use OCP\AppFramework\IAppContainer;
 
@@ -27,6 +28,13 @@ class Application extends App {
 			return new ReadItLaterController(
 				$container->query('AppName'),
 				$container->query('Request'),
+				$container->query('userId'),
+				$container->query('ReadItLaterService')
+			);
+		});
+
+		$container->registerService('ReadItLaterService', function(IAppContainer $container) {
+			return new ReadItLaterService(
 				$container->query('EntryMapper')
 			);
 		});

@@ -1,0 +1,19 @@
+{
+    "name": "phisch/read_it_later",
+    "type": "owncloud-app",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Patrick Jahns",
+            "email": "github@patrickjahns.de"
+        },
+        {
+            "name": "Philipp Schaffrath",
+            "email": "git@philipp.schaffrath.email"
+        }
+    ],
+    "require": {
+        "dompdf/dompdf": "^0.8.0",
+        "j0k3r/graby": "^1.10.0"
+    }
+}

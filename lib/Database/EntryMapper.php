@@ -36,4 +36,14 @@ class EntryMapper extends Mapper {
 		return $this->findEntities($sql, [$userId]);
 	}
 
+	/**
+	 * @param $userId
+	 * @param $fileId
+	 * @return \OCP\AppFramework\Db\Entity
+	 */
+	public function findForFileID($userId, $fileId) {
+		$sql = 'SELECT * FROM *PREFIX*read_it_later_entries WHERE user_id = ? AND file_id = ?';
+		return $this->findEntity($sql, [$userId, $fileId]);
+	}
+
 }

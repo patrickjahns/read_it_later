@@ -5,12 +5,15 @@
     <description></description>
     <licence>MIT</licence>
     <author>Patrick Jahns, Philipp Schaffrath</author>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <namespace>ReadItLater</namespace>
     <use-migrations>true</use-migrations>
     <dependencies>
         <owncloud min-version="10.0" max-version="10.0" />
     </dependencies>
+    <types>
+        <filesystem/>
+    </types>
     <navigation>
         <route>read_it_later.readItLater.index</route>
         <order>100</order>

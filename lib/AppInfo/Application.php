@@ -9,7 +9,9 @@ use OCA\ReadItLater\Database\EntryMapper;
 use OCA\ReadItLater\ReadItLaterService;
 use OCA\ReadItLater\Storage\ReadItLaterStorage;
 use OCP\AppFramework\App;
+use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\IAppContainer;
+use OCP\Files\Node;
 
 class Application extends App {
 
@@ -20,6 +22,16 @@ class Application extends App {
 		parent::__construct('read_it_later', $urlParams);
 
 		$container = $this->getContainer();
+
+
+		$rootfolder = $container->query('OCP\\Files\\IRootFolder');
+		$rootfolder->listen('\OC\Files', 'postDelete', function(Node $node) use ($container) {
+			$entrymapper = $container->query('EntryMapper');
+			try {
+				$entry = $entrymapper->findForFileID($node->getOwner()->getUID(), $node->getId());
+				$entrymapper->delete($entry);
+			} catch (DoesNotExistException $e) {};
+		});
 
 		$container->registerService('EntryMapper', function(IAppContainer $container) {
 			return new EntryMapper(

@@ -2,9 +2,12 @@
 
 namespace OCA\ReadItLater\AppInfo;
 
+use Dompdf\Dompdf;
+use Graby\Graby;
 use OCA\ReadItLater\Controller\ReadItLaterController;
 use OCA\ReadItLater\Database\EntryMapper;
 use OCA\ReadItLater\ReadItLaterService;
+use OCA\ReadItLater\Storage\ReadItLaterStorage;
 use OCP\AppFramework\App;
 use OCP\AppFramework\IAppContainer;
 
@@ -37,7 +40,15 @@ class Application extends App {
 			return new ReadItLaterService(
 				$container->query('Graby'),
 				$container->query('DomPDF'),
+				$container->query('ReadItLaterStorage'),
 				$container->query('EntryMapper')
+			);
+		});
+
+		$container->registerService('ReadItLaterStorage', function(IAppContainer $container) {
+			return new ReadItLaterStorage(
+				$container->query('OCP\\Files\\IRootFolder')
+					->getUserFolder($container->query('userId'))
 			);
 		});
 
@@ -46,7 +57,7 @@ class Application extends App {
 		});
 
 		$container->registerService('DomPDF', function() {
-			return new DomPDF();
+			return new Dompdf();
 		});
 	}
 }

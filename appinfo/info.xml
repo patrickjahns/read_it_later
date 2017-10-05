@@ -5,7 +5,7 @@
     <description>Application that allows for downloading content as PDF</description>
     <licence>AGPL</licence>
     <author>Patrick Jahns, Philipp Schaffrath</author>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <namespace>ReadItLater</namespace>
     <use-migrations>true</use-migrations>
     <dependencies>

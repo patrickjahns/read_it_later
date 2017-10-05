@@ -16,7 +16,8 @@
         <filesystem/>
     </types>
     <category>productivity</category>
-    <screenshot>https://github.com/phisch/read_it_later/raw/master/screenshots/app1.png</screenshot>
+    <screenshot>https://github.com/phisch/read_it_later/raw/master/screenshots/screen2.png</screenshot>
+    <screenshot>https://github.com/phisch/read_it_later/raw/master/screenshots/screen1.png</screenshot>
     <navigation>
         <route>read_it_later.readItLater.index</route>
         <order>100</order>

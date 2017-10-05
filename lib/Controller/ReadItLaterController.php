@@ -42,6 +42,7 @@ class ReadItLaterController extends Controller {
 	}
 
 	/**
+	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @return TemplateResponse
 	 */
@@ -50,6 +51,7 @@ class ReadItLaterController extends Controller {
 	}
 
 	/**
+	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @return DataResponse
 	 */
@@ -58,6 +60,7 @@ class ReadItLaterController extends Controller {
 	}
 
 	/**
+	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @return DataResponse
 	 */
@@ -67,6 +70,7 @@ class ReadItLaterController extends Controller {
 	}
 
 	/**
+	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @return DataResponse
 	 */

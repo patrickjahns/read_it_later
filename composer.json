@@ -2,6 +2,14 @@
     "name": "phisch/read_it_later",
     "type": "owncloud-app",
     "license": "mit",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/patrickjahns/owncloudCodingStandard"
+        }
+    ],
     "authors": [
         {
             "name": "Patrick Jahns",
@@ -15,5 +23,8 @@
     "require": {
         "dompdf/dompdf": "^0.8.0",
         "j0k3r/graby": "^1.10.0"
+    },
+    "require-dev": {
+        "patrickjahns/owncloud-coding-standard": "^1.0@dev"
     }
 }
